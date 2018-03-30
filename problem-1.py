@@ -21,3 +21,19 @@ def genDFA(k):
 
     return dfa
 
+
+def traverseDFA(digitString, k):
+    nfa = genDFA(k)
+    currentStates = [0]
+
+    for character in digitString:
+        nextStates = []
+        for state in currentStates:
+            nextStates.append(nfa[state][int(character)])
+        currentStates.extend(nextStates)
+
+    for state in currentStates[1:]:
+        if (int(state) == 0):
+            return False
+
+    return True

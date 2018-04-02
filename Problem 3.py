@@ -66,16 +66,39 @@ def main():
     map.append([0,0])
     node = []
     dfa3 = []
+    dfa3.append(map[0])
     Q.put(map[0])
-    while (~Q.empty()):
+    #for x in range(10):
+    while (not Q.empty()):
         node = Q.get() # node = [x, y]
-
+        print("queue size: ", Q.qsize())
         # 0 = first dfa
         # 1 = second dfa
         tempNode1 = []
         tempNode1 = dfa1[node[0]]
         tempNode2 = []
         tempNode2 = dfa2[node[1]]
+        for i in range(2):
+            newNode = []
+            insert = True
+            newNode.append(tempNode1[i])
+            newNode.append(tempNode2[i])
+            for j in range(len(map)):
+            # if node isnt in the map
+                if map[j] == newNode:
+                    insert = False
+
+            if insert:
+                Q.put(newNode)
+                dfa3.append(newNode)
+                map.append(newNode)
+                print("inserting node: ", newNode)
+
+
+
+    print("dfa3: ", dfa3)
+
+
 
 
 

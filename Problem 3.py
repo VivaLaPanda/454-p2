@@ -66,7 +66,7 @@ def main():
     map.append([0,0])
     node = []
     dfa3 = []
-    dfa3.append(map[0])
+
     Q.put(map[0])
     #for x in range(10):
     while (not Q.empty()):
@@ -78,7 +78,8 @@ def main():
         tempNode1 = dfa1[node[0]]
         tempNode2 = []
         tempNode2 = dfa2[node[1]]
-        for i in range(2):
+        for i in range(k):
+            index = len(map)
             newNode = []
             insert = True
             newNode.append(tempNode1[i])
@@ -86,18 +87,36 @@ def main():
             for j in range(len(map)):
             # if node isnt in the map
                 if map[j] == newNode:
+                    index = j
                     insert = False
 
             if insert:
                 Q.put(newNode)
-                dfa3.append(newNode)
+                dfa3.append(index)
                 map.append(newNode)
                 print("inserting node: ", newNode)
+            else:
+                dfa3.append(index)
 
 
 
+    print ("map:  ",map)
     print("dfa3: ", dfa3)
 
+    f = open('dfa3.txt', 'w')
+    pretext = str(len(map))+ " " + str(k)
+    print(pretext)
+    f.write(pretext)
+    f.write("\n\n")
+    x = 0
+    for _ in range(len(dfa3)//k):
+        for y in range(k):
+            print(dfa3[x+y],end=" ")
+            f.write(str(dfa3[x+y]))
+            f.write(" ")
+        print()
+        f.write("\n")
+        x += k
 
 
 

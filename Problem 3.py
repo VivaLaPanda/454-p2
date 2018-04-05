@@ -103,12 +103,12 @@ def main():
                 for f1i in range(len(d1f)):
                     for f2i in range(len(f)):
                         if tempNode1[i] == d1f[f1i] and tempNode2[i] == f[f2i]:
-                            set = True
-                            for idx in range(len(fin_state)):
-                                if fin_state[idx] == index:
-                                    set = False
-                            if set:
-                                fin_state.append(index)
+                            #set = True
+                            #for idx in range(len(fin_state)):
+                                #if fin_state[idx] == index:
+                                    #set = False
+                            #if set:
+                            fin_state.append(index)
 
             else:
                 dfa3.append(index)
@@ -126,6 +126,7 @@ def main():
     print(pretext)
     f.write(pretext)
     f.write("\n")
+
     #output finish states, formated semi nicely
     for idx in range(len(fin_state)):
         if idx != len(fin_state)-1:

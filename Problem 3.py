@@ -68,6 +68,9 @@ def main():
     fin_state = []
     map = []
     map.append([0,0])
+    if d1f[0] == 0 and f[0] == 0:
+        fin_state.append(0)
+
     dfa3 = []
 
     Q.put(map[0])
@@ -96,19 +99,20 @@ def main():
                 dfa3.append(index)
                 map.append(newNode)
                 print("inserting node: ", newNode)
+                # find ending states, a little messy but it works
+                for f1i in range(len(d1f)):
+                    for f2i in range(len(f)):
+                        if tempNode1[i] == d1f[f1i] and tempNode2[i] == f[f2i]:
+                            set = True
+                            for idx in range(len(fin_state)):
+                                if fin_state[idx] == index:
+                                    set = False
+                            if set:
+                                fin_state.append(index)
+
             else:
                 dfa3.append(index)
 
-           #find ending states, a little messy but it works
-            for f1i in range(len(d1f)):
-                for f2i in range(len(f)):
-                    if tempNode1[i]== d1f[f1i] and tempNode2 [i] == f[f2i]:
-                        set = True
-                        for idx in range(len(fin_state)):
-                           if fin_state[idx] == index:
-                               set = False
-                        if set:
-                            fin_state.append(index)
 
 
 

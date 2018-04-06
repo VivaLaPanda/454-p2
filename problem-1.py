@@ -29,7 +29,7 @@ def traverseDFA(digitString, k):
     print("\n\n")
     currentStates = [0]
 
-    for character in digitString:
+    for character in str(digitString):
         nextStates = []
         for state in currentStates:
             nextStates.extend(nfa[state][int(character)])
@@ -42,6 +42,6 @@ def traverseDFA(digitString, k):
     return True
 
 def main():
-    print(traverseDFA("123412341", 10))
+    print(traverseDFA(2000, 1000))
 
 main()

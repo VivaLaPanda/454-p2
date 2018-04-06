@@ -1,7 +1,7 @@
 import subprocess
 
 def main():
-
+    # run with python 2.7
     command = 'egrep'
     regex = '([a-z])\\1[a-z]*([a-z])\\2'
     f = '/usr/share/dict/words'

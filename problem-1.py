@@ -7,7 +7,7 @@ import sys
 
 
 def genDFA(k):
-    dfa = [[[]]]
+    dfa = [[[] for j in range(10)] for i in range(k*2)]
     for state in range(k):
         dfa[state] = [[], [], [], [], [], [], [], [], [], []]
         for digit in range(10):
@@ -24,12 +24,15 @@ def genDFA(k):
 
 def traverseDFA(digitString, k):
     nfa = genDFA(k)
+    print("Printing NFA:\n")
+    print(nfa)
+    print("\n\n")
     currentStates = [0]
 
     for character in digitString:
         nextStates = []
         for state in currentStates:
-            nextStates.append(nfa[state][int(character)])
+            nextStates.extend(nfa[state][int(character)])
         currentStates.extend(nextStates)
 
     for state in currentStates[1:]:
@@ -37,3 +40,8 @@ def traverseDFA(digitString, k):
             return False
 
     return True
+
+def main():
+    print(traverseDFA("123412341", 10))
+
+main()

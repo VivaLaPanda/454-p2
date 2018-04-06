@@ -48,11 +48,13 @@ def traverseDFA(digitString, k):
 
 ### P2 BEGIN
 
-def p2program():
+def p2program(digitString):
     # run with python 2.7
     command = 'egrep'
     regex = '([a-z])\\1[a-z]*([a-z])\\2'
-    f = '/usr/share/dict/words'
+    print(regex)
+    #f = '/usr/share/dict/words'
+    f = digitString
     #f = 'problem-2.txt'
     cmd_list = [command, regex, f]
     #print(cmd_list)
@@ -214,7 +216,7 @@ def main():
 
     if p_num == "2":
         digi_string = input("please provide the name of a text file: ")
-        p2program()
+        p2program(digi_string)
 
     if p_num == "3":
         print("converting dfa1.txt and dfa2.txt into dfa3.txt")
